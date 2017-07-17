@@ -1,5 +1,5 @@
-## Configure swappiness
-<code>sudo vi /etc/sysctl.conf
+## 1. Configure swappiness
+`sudo vi /etc/sysctl.conf`
 vm.swappiness=1
 cat /proc/sys/vm/swappiness</code>
 
