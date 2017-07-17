@@ -1,74 +1,71 @@
 ## 1. Configure swappiness
 `sudo vi /etc/sysctl.conf`
-vm.swappiness=1
-cat /proc/sys/vm/swappiness</code>
+Add the line `vm.swappiness=1`
+`cat /proc/sys/vm/swappiness</code>`
 
-<code>mount -t ext3
-/dev/xvdb on /mnt type ext3 (rw,relatime,data=ordered)</code>
+## 2. Check mount type of volumes
+`mount -t ext3`
+Output: `/dev/xvdb on /mnt type ext3 (rw,relatime,data=ordered)`
 
-<code>sudo tune2fs -l /dev/xvdb</code>
-Reserved block count:     491417
+## 3. Check reserve space setting
+`sudo tune2fs -l /dev/xvdb`
+Output: `Reserved block count:     491417`
 
-<code>
-echo 'never' > /sys/kernel/mm/transparent_hugepage/defrag
-</code>
+## 4. Disable Transparent Huge Page
+`echo 'never' > /sys/kernel/mm/transparent_hugepage/defrag`
 
-<code>
-ifconfig
-eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 9001
+## 5. Check network interface
+`ifconfig`
+Output: `eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 9001
         inet 172.31.40.46  netmask 255.255.240.0  broadcast 172.31.47.255
         inet6 fe80::4a9:eff:fec4:7518  prefixlen 64  scopeid 0x20<link>
         ether 06:a9:0e:c4:75:18  txqueuelen 1000  (Ethernet)
         RX packets 1941  bytes 144967 (141.5 KiB)
         RX errors 0  dropped 0  overruns 0  frame 0
         TX packets 1591  bytes 177242 (173.0 KiB)
-        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
-</code>
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0`
 
-<code>
-host 172.31.40.46
-46.40.31.172.in-addr.arpa domain name pointer ip-172-31-40-46.us-west-2.compute.internal.
-</code>
+## 6. Check reverse and forward lookups
+`host 172.31.40.46`
+Output: `46.40.31.172.in-addr.arpa domain name pointer ip-172-31-40-46.us-west-2.compute.internal.`
 
-<code>
-nslookup 172.31.40.46
+`nslookup 172.31.40.46`
 
-Server:         172.31.0.2
-Address:        172.31.0.2#53
-Non-authoritative answer:
-46.40.31.172.in-addr.arpa       name = ip-172-31-40-46.us-west-2.compute.internal.
-</code>
+Output: ```Server:         172.31.0.2
+        Address:        172.31.0.2#53
+        Non-authoritative answer:
+        46.40.31.172.in-addr.arpa       name = ip-172-31-40-46.us-west-2.compute.internal.```
 
-<code>
-sudo yum install nscd
-sudo systemctl start nscd
-systemctl status nscd
+## 7. Install and start nscd and ntp services 
+`sudo yum install nscd`
+`sudo systemctl start nscd`
+`systemctl status nscd`
 
-nscd.service - Name Service Cache Daemon
+Output: ```nscd.service - Name Service Cache Daemon
    Loaded: loaded (/usr/lib/systemd/system/nscd.service; disabled; vendor preset: disabled)
    Active: active (running) since Mon 2017-07-17 14:48:55 EDT; 4s ago
-</code>
+   ```
 
-<code>
-sudo yum install ntp
-sudo systemctl start ntp
-systemctl status ntp
+`sudo yum install ntp`
+`sudo systemctl start ntp`
+`systemctl status ntp`
 
-ntpd.service - Network Time Service
+Output: ```ntpd.service - Network Time Service
    Loaded: loaded (/usr/lib/systemd/system/ntpd.service; disabled; vendor preset: disabled)
    Active: active (running) since Mon 2017-07-17 14:49:51 EDT; 5s ago
-</code>
+   ```
 
-<code>
-touch /etc/yum.repos.d/MariaDB.repo
+## 8. Install
+`touch /etc/yum.repos.d/MariaDB.repo`
 
-# MariaDB 10.0 RedHat repository list - created 2017-07-17 18:52 UTC
+Add to the repo file
+```# MariaDB 10.0 RedHat repository list - created 2017-07-17 18:52 UTC
 # http://downloads.mariadb.org/mariadb/repositories/
 [mariadb]
 name = MariaDB
 baseurl = http://yum.mariadb.org/10.0/rhel7-ppc64le
 gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
 gpgcheck=1
+```
+`sudo yum install mariadb-server mariadb-client`
 
-sudo yum install mariadb-server mariadb-client
-</code>
