@@ -46,7 +46,6 @@ Output: ```nscd.service - Name Service Cache Daemon
    Loaded: loaded (/usr/lib/systemd/system/nscd.service; disabled; vendor preset: disabled)
    Active: active (running) since Mon 2017-07-17 14:48:55 EDT; 4s ago
    ```
-
 `sudo yum install ntp`
 `sudo systemctl start ntp`
 `systemctl status ntp`
