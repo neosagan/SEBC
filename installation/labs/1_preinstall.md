@@ -16,14 +16,15 @@ Output: `Reserved block count:     491417`
 
 ## 5. Check network interface
 `ifconfig`
-Output: `eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 9001
+Output: ```eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 9001
         inet 172.31.40.46  netmask 255.255.240.0  broadcast 172.31.47.255
         inet6 fe80::4a9:eff:fec4:7518  prefixlen 64  scopeid 0x20<link>
         ether 06:a9:0e:c4:75:18  txqueuelen 1000  (Ethernet)
         RX packets 1941  bytes 144967 (141.5 KiB)
         RX errors 0  dropped 0  overruns 0  frame 0
         TX packets 1591  bytes 177242 (173.0 KiB)
-        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0`
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+        ```
 
 ## 6. Check reverse and forward lookups
 `host 172.31.40.46`
