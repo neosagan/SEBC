@@ -55,7 +55,7 @@ Output: ```ntpd.service - Network Time Service
    Active: active (running) since Mon 2017-07-17 14:49:51 EDT; 5s ago
    ```
 
-## 8. Install
+## 8. Install Master MariaDB
 `touch /etc/yum.repos.d/MariaDB.repo`
 
 Add to the repo file
