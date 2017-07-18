@@ -28,7 +28,7 @@ Found 1 items
 ### 4. Create the snapshot
     hdfs dfs -createSnapshot /user/neosagan/precious sebc-hdfs-test  
     
-**Output:** `Created snapshot /user/neosagan/precious/.snapshot/sebc-hdfs-test
+**Output:** `Created snapshot /user/neosagan/precious/.snapshot/sebc-hdfs-test`
 
 ### 5. Delete file
     hdfs dfs rm /user/neosagan/precious/SEBC-master.zip
