@@ -1,7 +1,7 @@
 ## 1. Configure swappiness
-`sudo vi /etc/sysctl.conf`
+    sudo vi /etc/sysctl.conf
 Add the line `vm.swappiness=1`
-`cat /proc/sys/vm/swappiness`
+    cat /proc/sys/vm/swappiness
 
 ## 2. Check mount type of volumes
 `mount -t ext3`
