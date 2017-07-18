@@ -182,7 +182,7 @@ gpgcheck = 1
     cd /usr/share/cmf/schema/
     sudo ./scm_prepare_db.sh <cm_database> <cm_username> <cm_password>
     
-## 13. Start Cloudera Manager server and agents services
+### 13. Start Cloudera Manager server
     sudo systemctl start cloudera-scm-server
     
 **Output:**
@@ -192,6 +192,7 @@ Loaded: loaded (/etc/rc.d/init.d/cloudera-scm-server; bad; vendor preset: disabl
 Active: active (exited) since Tue 2017-07-18 09:28:20 EDT; 2h 47min ago
 ```
 
+### 14. Start Cloudera Manager agent 
     sudo systemctl start cloudera-scm-agent
 
 **Output:**
