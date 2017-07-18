@@ -33,36 +33,39 @@
 **Output:** `46.40.31.172.in-addr.arpa domain name pointer ip-172-31-40-46.us-west-2.compute.internal.`
 
     nslookup 172.31.40.46
-
 **Output:**
 
     Server: 172.31.0.2
     Address: 172.31.0.253
-    Non-authoritative answer: 46.40.31.172.in-addr.arpa       name = ip-172-31-40-46.us-west-2.compute.internal.
+    Non-authoritative answer: 46.40.31.172.in-addr.arpa       
+    name = ip-172-31-40-46.us-west-2.compute.internal.
 
-## 7. Install and start nscd and ntp services 
-`sudo yum install nscd`
-`sudo systemctl start nscd`
-`systemctl status nscd`
+### 7. Install and start nscd and ntp services 
+    sudo yum install nscd
+    sudo systemctl start nscd
+    systemctl status nscd`
+**Output:**
 
-Output: ```nscd.service - Name Service Cache Daemon
-   Loaded: loaded (/usr/lib/systemd/system/nscd.service; disabled; vendor preset: disabled)
-   Active: active (running) since Mon 2017-07-17 14:48:55 EDT; 4s ago
-   ```
-`sudo yum install ntp`
-`sudo systemctl start ntp`
-`systemctl status ntp`
+    nscd.service - Name Service Cache Daemon
+    Loaded: loaded (/usr/lib/systemd/system/nscd.service; disabled; vendor preset: disabled)
+    Active: active (running) since Mon 2017-07-17 14:48:55 EDT; 4s ago
+   
+    sudo yum install ntp
+    sudo systemctl start ntp
+    systemctl status ntp
 
-Output: ```ntpd.service - Network Time Service
-   Loaded: loaded (/usr/lib/systemd/system/ntpd.service; disabled; vendor preset: disabled)
-   Active: active (running) since Mon 2017-07-17 14:49:51 EDT; 5s ago
-   ```
+**Output:** 
+    
+    ntpd.service - Network Time Service
+    Loaded: loaded (/usr/lib/systemd/system/ntpd.service; disabled; vendor preset: disabled)
+    Active: active (running) since Mon 2017-07-17 14:49:51 EDT; 5s ago
+   
+### 8. Install Master MariaDB
+    touch /etc/yum.repos.d/MariaDB.repo
 
-## 8. Install Master MariaDB
-`touch /etc/yum.repos.d/MariaDB.repo`
-
-Add to the repo file
-```# MariaDB 10.0 RedHat repository list - created 2017-07-17 18:52 UTC
+* Add to the repo file
+```
+# MariaDB 10.0 RedHat repository list - created 2017-07-17 18:52 UTC
 # http://downloads.mariadb.org/mariadb/repositories/
 [mariadb]
 name = MariaDB
@@ -70,5 +73,5 @@ baseurl = http://yum.mariadb.org/10.0/rhel7-ppc64le
 gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
 gpgcheck=1
 ```
-`sudo yum install mariadb-server mariadb-client`
+    sudo yum install mariadb-server mariadb-client
 
