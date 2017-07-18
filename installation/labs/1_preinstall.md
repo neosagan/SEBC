@@ -5,11 +5,11 @@
 
 ### 2. Check mount type of volumes
     mount -t ext3
-Output: `/dev/xvdb on /mnt type ext3 (rw,relatime,data=ordered)`
+**Output:** `/dev/xvdb on /mnt type ext3 (rw,relatime,data=ordered)`
 
 ### 3. Check reserve space setting
     sudo tune2fs -l /dev/xvdb
-Output: `Reserved block count: 491417`
+**Output:** `Reserved block count: 491417`
 
 ### 4. Disable Transparent Huge Page
     echo never > /sys/kernel/mm/transparent_hugepage/defrag
@@ -17,7 +17,7 @@ Output: `Reserved block count: 491417`
 
 ### 5. Check network interface
     ifconfig
-Output:
+**Output:**
 
     eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 9001
     inet 172.31.40.46  netmask 255.255.240.0  broadcast 172.31.47.255
@@ -28,16 +28,17 @@ Output:
     TX packets 1591  bytes 177242 (173.0 KiB)
     TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
     
-## 6. Check reverse and forward lookups
-`host 172.31.40.46`
-Output: `46.40.31.172.in-addr.arpa domain name pointer ip-172-31-40-46.us-west-2.compute.internal.`
+### 6. Check reverse and forward lookups
+    host 172.31.40.46
+**Output:** `46.40.31.172.in-addr.arpa domain name pointer ip-172-31-40-46.us-west-2.compute.internal.`
 
-`nslookup 172.31.40.46`
+    nslookup 172.31.40.46
 
-Output: ```Server:         172.31.0.2
-        Address:        172.31.0.2#53
-        Non-authoritative answer:
-        46.40.31.172.in-addr.arpa       name = ip-172-31-40-46.us-west-2.compute.internal.```
+**Output:**
+
+    Server: 172.31.0.2
+    Address: 172.31.0.253
+    Non-authoritative answer: 46.40.31.172.in-addr.arpa       name = ip-172-31-40-46.us-west-2.compute.internal.
 
 ## 7. Install and start nscd and ntp services 
 `sudo yum install nscd`
