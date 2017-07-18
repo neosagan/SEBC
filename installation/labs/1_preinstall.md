@@ -1,21 +1,22 @@
-## 1. Configure swappiness
+### 1. Configure swappiness
     sudo vi /etc/sysctl.conf
 * Add the line `vm.swappiness=1`
 * Reboot and check the change with `cat /proc/sys/vm/swappiness`
 
-## 2. Check mount type of volumes
-`mount -t ext3`
+### 2. Check mount type of volumes
+    mount -t ext3
 Output: `/dev/xvdb on /mnt type ext3 (rw,relatime,data=ordered)`
 
-## 3. Check reserve space setting
-`sudo tune2fs -l /dev/xvdb`
-Output: `Reserved block count:     491417`
+### 3. Check reserve space setting
+    sudo tune2fs -l /dev/xvdb
+Output: `Reserved block count: 491417`
 
-## 4. Disable Transparent Huge Page
-`echo 'never' > /sys/kernel/mm/transparent_hugepage/defrag`
+### 4. Disable Transparent Huge Page
+    echo never > /sys/kernel/mm/transparent_hugepage/defrag
+    echo never > /sys/kernel/mm/transparent_hugepage/enabled
 
-## 5. Check network interface
-`ifconfig`
+### 5. Check network interface
+    ifconfig
 Output: ```eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 9001
         inet 172.31.40.46  netmask 255.255.240.0  broadcast 172.31.47.255
         inet6 fe80::4a9:eff:fec4:7518  prefixlen 64  scopeid 0x20<link>
