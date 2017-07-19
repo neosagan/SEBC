@@ -81,6 +81,10 @@ gpgcheck=1
 ```
 * Install the server and client `sudo yum install mariadb-server mariadb-client`
 
+* Start MariaDB service `sudo systemctl start mariadb`
+
+* Execute `/usr/bin/mysql_secure_installation`
+
 ### Create users and databases
 
 ```
