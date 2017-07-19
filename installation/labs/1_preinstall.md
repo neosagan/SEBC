@@ -1,21 +1,27 @@
-### 1. Configure swappiness
+### Disable SELinux
+    sudo vi /etc/selinux/config
+* Set `SELinux=disabled`
+* Reboot
+* Check with `getenforce` command
+
+### Configure swappiness
     sudo vi /etc/sysctl.conf
 * Add the line `vm.swappiness=1`
 * Reboot and check the change with `cat /proc/sys/vm/swappiness`
 
-### 2. Check mount type of volumes
+### Check mount type of volumes
     mount -t ext3
 **Output:** `/dev/xvdb on /mnt type ext3 (rw,relatime,data=ordered)`
 
-### 3. Check reserve space setting
+### Check reserve space setting
     sudo tune2fs -l /dev/xvdb
 **Output:** `Reserved block count: 491417`
 
-### 4. Disable Transparent Huge Page
+### Disable Transparent Huge Page
     echo never > /sys/kernel/mm/transparent_hugepage/defrag
     echo never > /sys/kernel/mm/transparent_hugepage/enabled
 
-### 5. Check network interface
+### Check network interface
     ifconfig
 **Output:**
 
@@ -28,7 +34,7 @@
     TX packets 1591  bytes 177242 (173.0 KiB)
     TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
     
-### 6. Check reverse and forward lookups
+### Check reverse and forward lookups
     host 172.31.40.46
 **Output:** `46.40.31.172.in-addr.arpa domain name pointer ip-172-31-40-46.us-west-2.compute.internal.`
 
@@ -40,7 +46,7 @@
     Non-authoritative answer: 46.40.31.172.in-addr.arpa       
     name = ip-172-31-40-46.us-west-2.compute.internal.
 
-### 7. Install and start nscd and ntp services 
+### Install and start nscd and ntp services 
     sudo yum install nscd
     sudo systemctl start nscd
     systemctl status nscd`
@@ -60,7 +66,7 @@
     Loaded: loaded (/usr/lib/systemd/system/ntpd.service; disabled; vendor preset: disabled)
     Active: active (running) since Mon 2017-07-17 14:49:51 EDT; 5s ago
    
-### 8. Install Master MariaDB
+### Install Master MariaDB
     touch /etc/yum.repos.d/MariaDB.repo
 
 * Add to the repo file
@@ -75,7 +81,7 @@ gpgcheck=1
 ```
 * Install the server and client `sudo yum install mariadb-server mariadb-client`
 
-### 9. Create users and databases
+### Create users and databases
 
 ```
 create database scm DEFAULT CHARACTER SET utf8;
@@ -145,7 +151,7 @@ MariaDB [(none)]> show databases;
 13 rows in set (0.01 sec)
 ```
 
-### 11. Install Java 7
+### Install Java 7
     sudo yum install java-1.7.0-openjdk-devel
     java -version
 
@@ -155,13 +161,13 @@ MariaDB [(none)]> show databases;
     OpenJDK Runtime Environment (rhel-2.6.10.1.el7_3-x86_64 u141-b02)
     OpenJDK 64-Bit Server VM (build 24.141-b02, mixed mode)
 
-### 10. Download and install the jdbc driver
+### Download and install the jdbc driver
     tar vxf mysql-connector-java-5.1.42.tar.gz
     cd mysql-connector-java-5-1-42
     mv mysql-connector-java-5-1-42.jar mysql-connector-java.jar
     sudo cp mysql-connector-java.jar /usr/share/java
     
-### 11. Add the repo and install Cloudera Manager Server and Agent
+### Add the repo and install Cloudera Manager Server and Agent
     sudo vi /etc/yum.repos.d/cloudera-manager.repo
 
 * Add file corresponding to the CM version to install. In this case 5.10.2
@@ -178,11 +184,11 @@ gpgcheck = 1
 * Install the cloudera manager `sudo yum install cloudera-manager-server cloudera-manager-daemons`
 * Install the cloudera manager `sudo yum install cloudera-manager-agent`
 
-### 12. Prepare the Cloudera Manager DB
+### Prepare the Cloudera Manager DB
     cd /usr/share/cmf/schema/
     sudo ./scm_prepare_db.sh <cm_database> <cm_username> <cm_password>
     
-### 13. Start Cloudera Manager server
+### Start Cloudera Manager server
     sudo systemctl start cloudera-scm-server
     
 **Output:**
