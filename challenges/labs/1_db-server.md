@@ -1,16 +1,16 @@
-* Database server's 
+### Database server's 
 
     hostname
 
 **Output:** `ip-172-31-34-86.us-west-2.compute.internal`
 
-* Database server version
+### Database server version
 
     >SELECT VERSION();
 
 **Output:** `5.5.52-MariaDB`
 
-* Avaialble databases
+### Avaialble databases
 
     >SHOW databases;
 	
