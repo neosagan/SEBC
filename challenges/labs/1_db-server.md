@@ -10,7 +10,7 @@
 
 **Output:** `5.5.52-MariaDB`
 
-### Avaialble databases
+### Available databases
 
     >SHOW databases;
 	
