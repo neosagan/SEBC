@@ -1,7 +1,7 @@
 ```
 Testing loop started on Wed Jul 19 12:02:53 EDT 2017
-1
-1
+Mappers: 1
+Reducers: 1
 
 real    1m11.411s
 user    0m5.737s
@@ -22,7 +22,7 @@ user    0m7.858s
 sys     0m0.293s
 Deleted user/neosagan/results/tg-10GB-1-1-1024
 Deleted user/neosagan/results/ts-10GB-1-1-1024
-2
+Reducers:2
 
 real    2m1.120s
 user    0m6.006s
@@ -43,8 +43,8 @@ user    0m7.835s
 sys     0m0.329s
 Deleted user/neosagan/results/tg-10GB-1-2-1024
 Deleted user/neosagan/results/ts-10GB-1-2-1024
-2
-1
+Mappers: 2
+Reducers: 1
 
 real    0m59.173s
 user    0m5.831s
@@ -65,7 +65,7 @@ user    0m7.672s
 sys     0m0.285s
 Deleted user/neosagan/results/tg-10GB-2-1-1024
 Deleted user/neosagan/results/ts-10GB-2-1-1024
-2
+Mappers: 2
 
 real    1m33.167s
 user    0m5.903s
