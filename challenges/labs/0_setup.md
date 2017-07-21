@@ -59,8 +59,8 @@ sudo passwd saturn
 
 ### Output `/etc/passwd`
 ```
-haley:x:2800:1001::/home/haley:/bin/bash
-saturn:x:2900:1002::/home/saturn:/bin/bash
+haley:x:2900:1001::/home/haley:/bin/bash
+saturn:x:2800:1002::/home/saturn:/bin/bash
 ```
 
 ### Output `/etc/groups`
