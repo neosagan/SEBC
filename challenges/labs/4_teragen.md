@@ -1,6 +1,6 @@
 ### Teragen command
 ```
-time hadoop jar  /opt/cloudera/parcels/CDH-5.10.2-1.cdh5.10.2.p0.5/jars/hadoop-mapreduce-examples-2.6.0-cdh5.12.0.jar teragen -Dmapreduce.map.tasks=12 -Ddfs.blocksize=32M -Dmapreduce.map.memory.mb=32 65536000 /user/saturn/tgen
+time hadoop jar /opt/cloudera/parcels/CDH-5.10.2-1.cdh5.10.2.p0.5/jars/hadoop-mapreduce-examples-2.6.0-cdh5.10.2.jar teragen -Dmapreduce.job.maps=12 -Ddfs.blocksize=32M -Dmapreduce.map.memory.mb=32 65536000 /user/saturn/tgen
 ```
 ### Teragen time
 ```
