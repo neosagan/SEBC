@@ -1,5 +1,4 @@
 ### Directories in HDFS
-
 ```
 Found 7 items
 drwxr-xr-x   - haley  comets           0 2017-07-19 20:39 /user/haley
