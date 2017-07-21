@@ -10,6 +10,7 @@ CentOS-Debuginfo.repo  CentOS-Sources.repo    mariadb.repo
 ```
 
 ### Execution of `scm_prepare_database.sh`
+    sudo ./scm_prepare_database.sh mysql <database> <username> <password>
     sudo ./scm_prepare_database.sh mysql scm scm scm
 
 **Output:**
